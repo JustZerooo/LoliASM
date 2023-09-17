@@ -37,7 +37,8 @@ public class CommonProxy {
     public void throwIncompatibility() {
         boolean texFix = Loader.isModLoaded("texfix");
         boolean vanillaFix = Loader.isModLoaded("vanillafix");
-        if (texFix || vanillaFix) {
+        boolean spongeForge = Loader.isModLoaded("spongeforge");
+        if (texFix || vanillaFix || spongeForge) {
             List<String> messages = new ArrayList<>();
             messages.add("LoliASM has replaced and improved upon functionalities from the following mods.");
             messages.add("Therefore, these mods are now incompatible with LoliASM:");
@@ -47,6 +48,9 @@ public class CommonProxy {
             }
             if (vanillaFix) {
                 messages.add(TextFormatting.BOLD + "VanillaFix");
+            }
+            if (spongeForge) {
+                messages.add(TextFormatting.BOLD + "SpongeForge");
             }
             LoliIncompatibilityHandler.loliHaetPizza(messages);
         }
